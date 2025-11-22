@@ -1,8 +1,9 @@
-
 # Proyecto Tienda Online - Taller Parcial
 
-Backend API REST en Spring Boot (Java 17, Gradle - Groovy) para la plataforma de tienda online.
+## Integrantes  
+Luis David Cárdenas y Sandra Cantillo
 
+Backend API REST en Spring Boot (Java 17, Gradle - Groovy).
 ## Tecnologías
 
 - Java 17
@@ -14,7 +15,7 @@ Backend API REST en Spring Boot (Java 17, Gradle - Groovy) para la plataforma de
 
 ## Configuración de base de datos
 
-La base de datos **tienda_online** y sus tablas deben existir previamente, creadas con el script que te entregó el docente.
+La base de datos **tienda_online** y sus tablas deben existir previamente.
 
 En `src/main/resources/application.properties` configura tu usuario y contraseña de MySQL:
 
@@ -41,10 +42,6 @@ Desde la raíz del proyecto:
 
 ### En Linux / macOS
 
-```bash
-./gradlew bootRun
-```
-
 ### En Windows
 
 ```bash
@@ -62,59 +59,11 @@ java -jar build/libs/tienda-online-0.0.1-SNAPSHOT.jar
 
 ### Autenticación (JWT)
 
-- `POST /api/auth/login`
-
-Body JSON:
-
-```json
-{
-  "correoElectronico": "juan.perez@email.com",
-  "password": "Qwerty123"
-}
-```
-
-Devuelve:
-
-```json
-{
-  "token": "Bearer-Token-JWT..."
-}
-```
-
-Usa el token en el header:
-
-```http
-Authorization: Bearer <token>
-```
-
 ### Productos (público, sin seguridad)
-
-- `GET /api/productos/bajo-stock?maxStock=15`  
-  Lista todos los productos con stock menor o igual a `maxStock`.
 
 ### Comentarios (público, sin seguridad)
 
-- `GET /api/comentarios/desde?fecha=2025-05-01T00:00:00`  
-  Lista los comentarios cuya fecha sea **posterior** al parámetro `fecha` (formato ISO `yyyy-MM-dd'T'HH:mm:ss`).
-
 ### Carrito de compras (requiere JWT)
-
-- `POST /api/carritos`  
-  Crea un carrito para el usuario autenticado, descuenta stock y calcula subtotal e impuestos.
-
-Body de ejemplo:
-
-```json
-{
-  "items": [
-    { "idProducto": 1, "cantidad": 2 },
-    { "idProducto": 3, "cantidad": 1 }
-  ]
-}
-```
-
-- `GET /api/carritos/{idCarrito}/productos`  
-  Lista los productos de un carrito **si el carrito pertenece al usuario autenticado**.
 
 ## Notas
 
