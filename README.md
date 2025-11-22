@@ -40,8 +40,6 @@ Al iniciar la aplicación:
 
 Desde la raíz del proyecto:
 
-### En Linux / macOS
-
 ### En Windows
 
 ```bash
